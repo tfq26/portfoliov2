@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const Portfolio = () => {
     const [expandedTile, setExpandedTile] = useState(null);
@@ -141,10 +141,15 @@ const Portfolio = () => {
                                 className="relative w-full p-6 bg-indigo-700 rounded-lg shadow-lg text-white cursor-pointer"
                                 onClick={() => toggleDescription(project.name)}
                             >
-                                <div
-                                    className="absolute inset-0 bg-center bg-no-repeat bg-contain opacity-50 rounded-lg"
-                                    style={{backgroundImage: `url('${project.backgroundImage}')`}}
-                                ></div>
+                                {/* Wrapper with Padding */}
+                                <div className="absolute inset-0 p-4 rounded-lg box-border">
+                                    <div
+                                        className="w-full h-full bg-center bg-no-repeat bg-contain opacity-50 rounded-lg"
+                                        style={{ backgroundImage: `url('${project.backgroundImage}')` }}
+                                    ></div>
+                                </div>
+
+                                {/* Content */}
                                 <div className="relative">
                                     <h3 className="text-4xl font-bold mb-3">{project.name}</h3>
                                     <p
