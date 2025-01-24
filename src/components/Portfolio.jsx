@@ -61,18 +61,19 @@ const Portfolio = () => {
                 </div>
 
                 {/* Portfolio Text Container */}
-                <div className="hero_text_container flex flex-col items-center text-center md:text-left w-full md:w-1/2">
+                <div
+                    className="hero_text_container flex flex-col items-center text-center md:text-left w-full md:w-1/2">
                     <h2 className="text-5xl md:text-7xl text-gray-200 mt-4">Hello, I&#39;m</h2>
                     <h1 className="text-6xl md:text-[10em] font-bold text-transparent bg-clip-text bg-gradient-to-b from-blue-800 to-blue-500">
                         Taufeeq Ali
                     </h1>
                     <h2 className="text-4xl md:text-6xl text-gray-200 mt-4">A Full-Stack Developer</h2>
-                    <div className="flex flex-col md:flex-row md:space-x-[5rem] mt-9">
+                    <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-8 mt-9">
                         <a
                             href="https://www.linkedin.com/in/taufeeq-ali-260366215"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="button px-6 py-2 mb-4 md:mb-0 text-white bg-gradient-to-r hover:scale-105 ease-in-out duration-400 from-[#1c6bff] to-[#6a9dfc] rounded-lg"
+                            className="button px-6 py-2 text-white bg-gradient-to-r hover:scale-105 ease-in-out duration-400 from-[#1c6bff] to-[#6a9dfc] rounded-lg"
                         >
                             View my LinkedIn
                         </a>
@@ -83,6 +84,14 @@ const Portfolio = () => {
                             className="button px-6 py-2 text-white bg-gradient-to-l hover:scale-105 ease-in-out duration-400 from-[#1c6bff] to-[#6a9dfc] rounded-lg"
                         >
                             Get in Touch
+                        </a>
+                        <a
+                            href="https://github.com/tfq26"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="button px-6 py-2 text-white bg-gradient-to-r hover:scale-105 ease-in-out duration-400 from-[#1c6bff] to-[#6a9dfc] rounded-lg"
+                        >
+                            Github
                         </a>
                     </div>
                 </div>
@@ -102,7 +111,7 @@ const Portfolio = () => {
                             key={icon}
                             src={`/${icon}-16-svgrepo-com.svg`}
                             alt={icon}
-                            className="h-10 w-10 md:h-12 md:w-12 hover:scale-110 transition-transform duration-300"
+                            className="h-10 w-10 md:h-12 md:w-12 hover:scale-110 transition-transform duration-300 invert-100"
                         />
                     ))}
                 </div>
@@ -113,7 +122,15 @@ const Portfolio = () => {
                 id="projects"
                 className="projects flex flex-col items-center w-full bg-gradient-to-b from-indigo-800 to-indigo-900 py-10 px-5"
             >
-                <h2 className="text-6xl font-bold text-center text-white mb-8">My Projects</h2>
+                <h2
+                    className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-t from-gray-100 to-blue-500 mb-8"
+                    style={{
+                        height: `calc(2vh + 4rem)`, // Adjust height dynamically based on viewport height
+                    }}
+                >
+                    Projects
+                </h2>
+
 
                 {isMobileView ? (
                     // Mobile View Layout
@@ -121,84 +138,56 @@ const Portfolio = () => {
                         {projects.map((project, index) => (
                             <div
                                 key={index}
-                                className="relative p-6 bg-indigo-700 rounded-lg shadow-lg text-white cursor-pointer"
+                                className="relative w-full p-6 bg-indigo-700 rounded-lg shadow-lg text-white cursor-pointer"
                                 onClick={() => toggleDescription(project.name)}
                             >
-                                {/* Background image with opacity */}
                                 <div
                                     className="absolute inset-0 bg-center bg-no-repeat bg-contain opacity-50 rounded-lg"
-                                    style={{ backgroundImage: `url('${project.backgroundImage}')` }}
+                                    style={{backgroundImage: `url('${project.backgroundImage}')`}}
                                 ></div>
-
-                                {/* Content */}
                                 <div className="relative">
                                     <h3 className="text-4xl font-bold mb-3">{project.name}</h3>
                                     <p
-                                        className={`text-gray-300 text-xl transition-max-height duration-500 ease-in-out overflow-hidden ${
+                                        className={`text-white text-xl transition-max-height duration-500 ease-in-out overflow-hidden ${
                                             expandedTile === project.name ? "max-h-[300px] pt-6" : "max-h-0"
                                         }`}
                                     >
                                         {project.description}
                                     </p>
-
-                                    {/* GitHub Link */}
-                                    {expandedTile === project.name && (
-                                        <div className="mt-4">
-                                            <a
-                                                href={`https://github.com/tfq26/${project.name.toLowerCase()}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="inline-block px-4 py-2 mt-4 text-white bg-gradient-to-r from-blue-600 to-blue-400 hover:scale-105 transition-transform duration-300 rounded-lg"
-                                            >
-                                                View on GitHub
-                                            </a>
-                                        </div>
-                                    )}
                                 </div>
                             </div>
                         ))}
                     </div>
                 ) : (
                     // Desktop View Layout
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                         {projects.map((project, index) => (
                             <div
                                 key={index}
-                                className="relative p-6 bg-indigo-700 rounded-lg shadow-lg text-white cursor-pointer"
+                                className="relative w-96 h-96 bg-indigo-700 rounded-lg shadow-lg text-white cursor-pointer"
                                 onMouseEnter={() => setExpandedTile(project.name)}
                                 onMouseLeave={() => setExpandedTile(null)}
                                 onClick={() => toggleDescription(project.name)}
                             >
                                 {/* Background image with opacity */}
-                                <div
-                                    className="absolute inset-0 bg-center bg-no-repeat bg-contain opacity-50 rounded-lg"
-                                    style={{ backgroundImage: `url('${project.backgroundImage}')` }}
-                                ></div>
+                                <div className="absolute inset-0 p-8 rounded-lg box-border">
+                                    <div
+                                        className="w-full h-full bg-center bg-no-repeat bg-cover rounded-lg opacity-50"
+                                        style={{backgroundImage: `url('${project.backgroundImage}')`}}
+                                    ></div>
+                                </div>
+
 
                                 {/* Content */}
-                                <div className="relative">
-                                    <h3 className="text-4xl font-bold mb-3">{project.name}</h3>
+                                <div className="relative p-4">
+                                    <h3 className="text-5xl text-center font-bold mb-2">{project.name}</h3>
                                     <p
-                                        className={`text-gray-300 text-xl transition-max-height duration-500 ease-in-out overflow-hidden ${
-                                            expandedTile === project.name ? "max-h-[300px] pt-6" : "max-h-0"
+                                        className={`text-white text-lg transition-max-height duration-500 ease-in-out overflow-hidden ${
+                                            expandedTile === project.name ? "max-h-[500px] pt-2" : "max-h-0"
                                         }`}
                                     >
                                         {project.description}
                                     </p>
-
-                                    {/* GitHub Link */}
-                                    {expandedTile === project.name && (
-                                        <div className="mt-4">
-                                            <a
-                                                href={`https://github.com/tfq26/${project.name.toLowerCase()}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="inline-block px-4 py-2 mt-4 text-white bg-gradient-to-r from-blue-600 to-blue-400 hover:scale-105 transition-transform duration-300 rounded-lg"
-                                            >
-                                                View on GitHub
-                                            </a>
-                                        </div>
-                                    )}
                                 </div>
                             </div>
                         ))}
