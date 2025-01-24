@@ -48,15 +48,15 @@ const Portfolio = () => {
             {/* Hero Section */}
             <div
                 id="home"
-                className="hero flex flex-col items-center md:flex-row w-full min-h-[70vh] py-10 px-5 bg-gradient-to-b from-indigo-950 to-indigo-900"
+                className="hero flex flex-col items-center md:flex-row w-full min-h-[100vh] py-10 px-5 bg-gradient-to-b from-indigo-950 to-indigo-900"
             >
                 {/* Portfolio Image Container */}
                 <div className="hero_img_container w-full md:w-1/2 flex justify-center relative mb-8 md:mb-0">
-                    <div className="absolute bg-blue-800 w-[200px] h-[200px] md:w-[400px] md:h-[400px] rounded-lg -z-10 translate-x-4 translate-y-4"></div>
+                    <div className="absolute bg-blue-800 w-[200px] h-[200px] md:w-[500px] md:h-[500px] rounded-lg -z-10 translate-x-4 translate-y-4"></div>
                     <img
                         alt="Profile"
                         src="/IMG_2260.JPG"
-                        className="object-cover rounded-lg max-w-[200px] md:max-w-[400px] aspect-square"
+                        className="object-cover rounded-lg w-[300px] h-[300px] md:w-[800px] md:h-[800px] aspect-square"
                     />
                 </div>
 
