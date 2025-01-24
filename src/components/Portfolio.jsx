@@ -149,7 +149,7 @@ const Portfolio = () => {
                                     <h3 className="text-4xl font-bold mb-3">{project.name}</h3>
                                     <p
                                         className={`text-white text-xl transition-max-height duration-500 ease-in-out overflow-hidden ${
-                                            expandedTile === project.name ? "max-h-[300px] pt-6" : "max-h-0"
+                                            expandedTile === project.name ? "max-h-[500px] pt-6" : "max-h-0"
                                         }`}
                                     >
                                         {project.description}
