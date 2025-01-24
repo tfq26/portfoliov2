@@ -134,6 +134,7 @@ const Portfolio = () => {
 
                 {isMobileView ? (
                     // Mobile View Layout
+                    // Mobile View Layout
                     <div className="flex flex-col space-y-6">
                         {projects.map((project, index) => (
                             <div
