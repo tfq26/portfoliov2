@@ -118,7 +118,7 @@ const Portfolio = () => {
                 {/* Button for Resume */}
                 <div className="mt-8">
                     <a
-                        href="public/Software Development Engineer Internship - 2025 (US).pdf" // Path to your resume file
+                        href="/Software Development Engineer Internship - 2025 (US).pdf" // Path to your resume file
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-6 py-2 text-white bg-gradient-to-b from-blue-600 to-blue-400 hover:scale-105 transition-transform duration-300 rounded-lg"
