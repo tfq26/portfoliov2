@@ -26,10 +26,10 @@ const Portfolio = () => {
             backgroundImage: "/libra-svgrepo-com.svg",
         },
         {
-            name: "Pisces",
-            description: `Pisces is an innovative event management platform built with React, Node.js, and MongoDB,
-             designed to empower organizers to seamlessly host events of all sizes.`,
-            backgroundImage: "/pisces-svgrepo-com.svg",
+            name: "Aries",
+            description: `Aries is a personal blog site that focuses on a variety of interests, including 
+            Cloud technology, AI, and web development as well as personal topics of interest. The site is built using Astro.js, a modern static site generator`,
+            backgroundImage: "/aries-svgrepo-com.svg",
         },
     ];
 
