@@ -24,7 +24,7 @@ const Experience = () => {
   return (
     <motion.section 
       id="experience"
-      className="relative py-20 overflow-hidden"
+      className="relative py-20 overflow-hidden "
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
@@ -54,12 +54,12 @@ const Experience = () => {
               <div className="md:flex items-center justify-between">
                 {/* Left side - Date and Company */}
                 <div className={`md:w-5/12 ${index % 2 === 0 ? 'md:order-1 md:text-right' : 'md:order-3'}`}>
-                  <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-indigo-600/50 text-blue-100 mb-3 border border-indigo-500/30">
+                  <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-blue-600/50 text-blue-100 mb-3 border border-indigo-500/30">
                     <span className="w-2 h-2 rounded-full bg-blue-400 mr-2"></span>
                     {exp.period}
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-white">{exp.company}</h3>
-                  <p className="text-blue-200">{exp.location}</p>
+                  <h3 className="text-2xl md:text-3xl font-bold text-blue-800 dark:text-white">{exp.company}</h3>
+                  <p className="text-blue-500 dark:text-blue-400">{exp.location}</p>
                 </div>
                 
                 {/* Center dot */}
@@ -71,7 +71,7 @@ const Experience = () => {
                 
                 {/* Right side - Role and Details */}
                 <div className={`mt-8 md:mt-0 md:w-5/12 ${index % 2 === 0 ? 'md:order-3' : 'md:order-1'}`}>
-                  <div className="bg-indigo-700/50 backdrop-blur-sm rounded-xl p-6 border border-indigo-600/30 shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-blue-400/30 group-hover:scale-[1.02]">
+                  <div className="bg-blue-700 backdrop-blur-sm rounded-xl p-6 border border-indigo-600/30 shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-blue-400/30 group-hover:scale-[1.02]">
                     <h4 className="text-xl md:text-2xl font-bold text-white mb-3 flex items-center">
                       <span className="w-3 h-3 rounded-full bg-blue-400 mr-3 animate-pulse"></span>
                       {exp.role}
