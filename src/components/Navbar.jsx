@@ -1,90 +1,118 @@
-import { useState } from "react";
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-scroll';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
-    const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    const toggleMobileMenu = () => {
-        setMobileMenuOpen(!isMobileMenuOpen);
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
     };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-    return (
-        <nav className="bg-[#161833] sticky top-0 z-[999] h-20 flex items-center justify-between px-5 md:px-20">
-            {/* Logo */}
-            <a href="#home" id="navbar__logo" className="flex items-center">
-                <img
-                    src="/wink-tongue-svgrepo-com.svg"
-                    alt="Logo"
-                    className="h-10 animate-rotate"
-                />
-            </a>
+  const navLinks = [
+    { name: 'Skills', to: 'skills' },
+    { name: 'Experience', to: 'experience' },
+    { name: 'Projects', to: 'projects' },
+    { name: 'Contact', to: 'contact' },
+  ];
 
-            {/* Mobile Menu Toggle */}
-            <div
-                className="navbar__toggle md:hidden flex flex-col items-center cursor-pointer"
-                id="mobile-menu"
-                onClick={toggleMobileMenu}
+  return (
+    <motion.nav
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-md' : 'bg-transparent'
+      }`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <Link
+            to="home"
+            smooth={true}
+            duration={500}
+            className="text-xl font-bold text-gray-900 dark:text-white cursor-pointer"
+          >
+            Taufeeq Ali
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                smooth={true}
+                duration={500}
+                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer"
+                activeClass="text-blue-600 dark:text-blue-400 font-semibold"
+                spy={true}
+              >
+                {link.name}
+              </Link>
+            ))}
+            <ThemeToggle />
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden flex items-center">
+            <ThemeToggle className="mr-4" />
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none"
+              aria-expanded="false"
             >
-                <span
-                    className={`bar w-6 h-1 bg-white my-1 transition-transform duration-300 ${
-                        isMobileMenuOpen ? "rotate-45 translate-y-2" : ""
-                    }`}
-                ></span>
-                <span
-                    className={`bar w-6 h-1 bg-white my-1 transition-opacity duration-300 ${
-                        isMobileMenuOpen ? "opacity-0" : ""
-                    }`}
-                ></span>
-                <span
-                    className={`bar w-6 h-1 bg-white my-1 transition-transform duration-300 ${
-                        isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
-                    }`}
-                ></span>
-            </div>
+              <span className="sr-only">Open main menu</span>
+              {!isMenuOpen ? (
+                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              ) : (
+                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
 
-            {/* Menu Links */}
-            <ul
-                className={`font-Oswald flex flex-col md:flex-row items-center absolute md:static top-20 left-0 w-full md:w-auto bg-[#161833] md:bg-transparent transition-transform duration-300 ${
-                    isMobileMenuOpen ? "translate-y-0" : "-translate-y-[1000px]"
-                } md:translate-y-0 z-10`}
-            >
-                <li className="py-3 md:py-0">
-                    <a
-                        href="#about"
-                        className= "text-[#7861f2] text-2xl md:mx-5 px-3 py-3 rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:bg-indigo-700 hover:text-white"
-
-                    >
-                        About
-                    </a>
-                </li>
-                <li className="py-3 md:py-0">
-                    <a
-                        href="#projects"
-                        className= "text-[#7861f2] text-2xl md:mx-5 px-3 py-3 rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:bg-indigo-700 hover:text-white"
-                    >
-                        Projects
-                    </a>
-                </li>
-                <li className="py-3 md:py-0">
-                    <a
-                        href="#contact"
-                        className= "text-[#7861f2] text-2xl md:mx-5 px-3 py-3 rounded-lg hover:shadow-lg transition-all duration-200 ease-in-out hover:bg-indigo-700 hover:text-white"
-                    >
-                        Contact
-                    </a>
-                </li>
-                {/*<li className="ml-[2rem] py-3 md:py-0 hover:scale-110 ease-in-out duration-200">*/}
-                {/*    <a*/}
-                {/*        href="https://github.com/tfq26"*/}
-                {/*        target="_blank"*/}
-                {/*        rel="noopener noreferrer"*/}
-                {/*        className="button px-6 py-2 text-white bg-gradient-to-l from-[#c1b5ff] to-[#6a9dfc] rounded-lg"*/}
-                {/*    >*/}
-                {/*        Github*/}
-                {/*    </a>*/}
-                {/*</li>*/}
-            </ul>
-        </nav>
-    );
+      {/* Mobile menu */}
+      {isMenuOpen && (
+        <motion.div 
+          className="md:hidden bg-white dark:bg-gray-900 shadow-lg"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.2 }}
+        >
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            {navLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                smooth={true}
+                duration={500}
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors cursor-pointer"
+                activeClass="bg-gray-100 dark:bg-gray-800 text-blue-600 dark:text-blue-400"
+                spy={true}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+        </motion.div>
+      )}
+    </motion.nav>
+  );
 };
 
 export default Navbar;
