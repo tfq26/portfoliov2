@@ -1,9 +1,10 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { staggerContainer } from '../animations';
 import Experience from './Experience';
 import ProjectCard from './ProjectCard';
 import { useTheme } from '../context/ThemeContext';
+import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 
 const Portfolio = () => {
   const { theme } = useTheme();
@@ -116,8 +117,37 @@ const Portfolio = () => {
             View My Work
           </a>
         </div>
-        <motion.div className="mt-12">
-          <img src="/IMG_2260.JPG" alt="Taufeeq Ali" className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-4 border-blue-500/30" />
+        <motion.div className="mt-12 text-center">
+          <div className="relative inline-block">
+            <img src="/IMG_2260.JPG" alt="Taufeeq Ali" className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-4 border-blue-500/30" />
+            <div className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 flex space-x-4">
+              <a 
+                href="https://github.com/tfq26" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-white p-2 rounded-full shadow-lg hover:bg-blue-100 transition-colors"
+                aria-label="GitHub"
+              >
+                <FiGithub className="w-6 h-6 text-blue-800" />
+              </a>
+              <a 
+                href="https://linkedin.com/in/taufeeq-ali" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-white p-2 rounded-full shadow-lg hover:bg-blue-100 transition-colors"
+                aria-label="LinkedIn"
+              >
+                <FiLinkedin className="w-6 h-6 text-blue-700" />
+              </a>
+              <a 
+                href="mailto:taufeeq2608@gmail.com" 
+                className="bg-white p-2 rounded-full shadow-lg hover:bg-blue-100 transition-colors"
+                aria-label="Email"
+              >
+                <FiMail className="w-6 h-6 text-blue-600" />
+              </a>
+            </div>
+          </div>
         </motion.div>
       </motion.section>
 
