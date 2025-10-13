@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion';
-
 export const fadeIn = (direction = 'up', delay = 0.3) => ({
   hidden: {
     y: direction === 'up' ? 40 : direction === 'down' ? -40 : 0,
