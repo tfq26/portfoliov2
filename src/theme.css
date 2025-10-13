@@ -1,0 +1,15 @@
+:root {
+    --color-surface: #ffffff;
+    --color-surface-alt: #f8fafc;
+    --color-text: #111827;
+    --color-primary: #2563eb; /* Tailwind blue-600 */
+    --color-border: #e5e7eb;
+  }
+  
+  .dark {
+    --color-surface: #0a0a09;
+    --color-surface-alt: #111111;
+    --color-text: #f1f5f9;
+    --color-primary: #3b82f6; /* Tailwind blue-500 */
+    --color-border: #27272a;
+  }
