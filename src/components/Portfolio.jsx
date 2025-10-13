@@ -217,6 +217,7 @@ const Portfolio = () => {
       
       {/* Experience Section */}
       <Section id="experience">
+        <SectionTitle>Professional Journey</SectionTitle>
           <div className="p-8 md:p-10">
             <Experience />
           </div>
