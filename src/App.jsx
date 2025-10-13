@@ -75,7 +75,7 @@ const App = () => {
       <Router>
         <ThemeProvider>
           <ParallaxProvider>
-            <div className="min-h-screen bg-white dark:bg-zinc-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+            <div className="min-h-screen dark:bg-zinc-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
               <Navbar />
               <main>
                 <Portfolio />

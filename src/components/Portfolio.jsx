@@ -2,24 +2,42 @@ import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { staggerContainer } from '../animations';
 import { useTheme } from '../context/ThemeContext';
-import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail, FiArrowRight } from 'react-icons/fi';
+import { IoGameControllerOutline } from 'react-icons/io5';
 import LazyLoad from '../utils/LazyLoad';
 
 // PrimeReact Imports
 import { Button } from 'primereact/button';
 import { ProgressBar } from 'primereact/progressbar';
-import { Card } from 'primereact/card';
 
 // Lazy load components
 const Experience = LazyLoad(() => import('./Experience'));
 const ProjectCard = LazyLoad(() => import('./ProjectCard'));
+
+// --- Reusable Components for Consistency ---
+
+// Section wrapper for consistent padding and spacing
+const Section = ({ id, children }) => (
+  <section id={id} className="w-full py-16 md:py-24 px-6">
+    <div className="max-w-7xl mx-auto">{children}</div>
+  </section>
+);
+
+// Standardized Section Title
+const SectionTitle = ({ children }) => (
+  <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-400 dark:to-indigo-500">
+    {children}
+  </h2>
+);
+
+// --- Main Portfolio Component ---
 
 const Portfolio = () => {
   const { theme } = useTheme();
   const heroRef = useRef(null);
 
   const projects = [
-    {
+        {
       id: 1,
       name: 'Toros',
       description: `Pickleball tournament management system for organizing live events. It uses React, Node.js, MongoDB, and Express to create a modern and responsive web application. It also uses Azure Cloud Services and AI Foundry to securely store, process, and respond to user queries.`,
@@ -29,7 +47,7 @@ const Portfolio = () => {
       image: 'https://images.unsplash.com/photo-1621314724606-fbf4c4231613',
       images: ['/Toros.webp'],
       icon: '/bull-svgrepo-com-white.svg',
-      status: 'Updating',
+      status: 'In Development',
       shortDescription: 'Pickleball tournament management system for organizing live events.',
     },
     {
@@ -43,6 +61,7 @@ const Portfolio = () => {
       images: ['/libra1.webp', '/libra2.webp', '/libra3.webp'],
       icon: '/libra-svgrepo-com-white.svg',
       status: 'Launched',
+      working: false,
       shortDescription: 'AI-powered tech assistant for troubleshooting & Q&A.',
     },
     {
@@ -51,7 +70,6 @@ const Portfolio = () => {
       description: 'Personal blog on Cloud, AI, and web development. It uses Astro.js, React, and Markdown to create a modern and responsive blog.',
       technologies: ['Astro.js', 'React', 'Markdown'],
       github: 'https://github.com/tfq26/aries',
-      demo: 'https://aries-blog.com',
       working: true,
       image: 'https://images.unsplash.com/photo-1756965812897-3f4c2a6c242c',
       icon: '/aries-svgrepo-com-white.svg',
@@ -70,228 +88,173 @@ const Portfolio = () => {
     { name: 'HTML', level: 80 },
   ];
 
-  const sectionBgClass = 'dark:bg-zinc-900 bg-blue-50';
+  // Base styles for social links
+  const socialLinkClass = "bg-white/70 dark:bg-slate-800/50 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-blue-100 dark:hover:bg-slate-700 transition-colors duration-300";
 
   return (
-    <div className={`${theme === 'dark' ? 'bg-zinc-900 text-white' : 'bg-white text-gray-900'} transition-colors duration-300`}>
+    // UPDATED: Added a subtle blue gradient for light mode. Dark mode remains the same.
+    <div className="bg-gradient-to-br from-white to-blue-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-300">
+      
       {/* Hero Section */}
       <motion.section
         id="home"
         ref={heroRef}
-        className={`min-h-screen flex flex-col justify-center items-center px-6 ${sectionBgClass}`}
+        // UPDATED: Made the background transparent to let the new gradient show through.
+        className="min-h-screen flex flex-col justify-center items-center text-center p-6 bg-transparent"
         variants={staggerContainer}
         initial="hidden"
         animate="show"
       >
-        <motion.h1 className="text-4xl md:text-6xl font-bold mb-6 dark:text-white text-blue-800">
-          Hi, I&apos;m <span className="text-blue-500">Taufeeq Ali</span>
+         <div className="relative mb-8">
+            <img 
+                src="/IMG_2260.webp" 
+                alt="Taufeeq Ali" 
+                className="w-48 h-48 md:w-56 md:h-56 rounded-full object-cover border-4 border-slate-200 dark:border-slate-700 shadow-lg" 
+            />
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 flex space-x-3">
+              <a href="https://github.com/tfq26" target="_blank" rel="noopener noreferrer" className={socialLinkClass} aria-label="GitHub">
+                <FiGithub className="w-6 h-6 text-slate-900 dark:text-slate-200" />
+              </a>
+              <a href="https://linkedin.com/in/taufeeq-ali" target="_blank" rel="noopener noreferrer" className={socialLinkClass} aria-label="LinkedIn">
+                <FiLinkedin className="w-6 h-6 text-blue-600" />
+              </a>
+              <a href="mailto:taufeeq2608@gmail.com" className={socialLinkClass} aria-label="Email">
+                <FiMail className="w-6 h-6 text-red-500" />
+              </a>
+            </div>
+          </div>
+
+        <motion.h1 className="text-4xl md:text-6xl font-bold mb-4 text-slate-900 dark:text-white">
+          Hi, I&apos;m <span className="text-blue-600 dark:text-blue-400">Taufeeq Ali</span>
         </motion.h1>
-        <motion.p className="text-lg md:text-xl text-blue-600 mb-8">
-          Full Stack Developer & Cloud Enthusiast
+        <motion.p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-8 max-w-2xl">
+          Full Stack Developer & Cloud Enthusiast crafting modern, scalable, and user-friendly web applications.
         </motion.p>
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-4">
           <Button
             label="Get In Touch"
-            link
             pt={{
-                root: 'px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white',
-                label: 'text-white'
+                root: 'px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-md',
             }}
-            onClick={() => window.location.href = '#contact'}
+            onClick={() => document.getElementById('footer-contact')?.scrollIntoView({ behavior: 'smooth' })}
           />
           <Button
             label="View My Work"
-            link
             pt={{
-                root: 'px-6 py-3 rounded-lg border-2 border-blue-500 text-blue-500 hover:bg-blue-500/10'
+                root: 'px-6 py-3 rounded-lg border-2 border-blue-500 text-blue-500 hover:bg-blue-500/10 font-semibold',
             }}
-            onClick={() => window.location.href = '#projects'}
+            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
           />
         </div>
-        <motion.div className="mt-12 text-center">
-          <div className="relative inline-block">
-            <img src="/IMG_2260.webp" alt="Taufeeq Ali" className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-4 border-blue-500/30" />
-            <div className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 flex space-x-4">
-              <a 
-                href="https://github.com/tfq26" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-white p-2 rounded-full shadow-lg hover:bg-blue-100 transition-colors"
-                aria-label="GitHub"
-              >
-                <FiGithub className="w-6 h-6 text-blue-800" />
-              </a>
-              <a 
-                href="https://linkedin.com/in/taufeeq-ali" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-white p-2 rounded-full shadow-lg hover:bg-blue-100 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <FiLinkedin className="w-6 h-6 text-blue-700" />
-              </a>
-              <a 
-                href="mailto:taufeeq2608@gmail.com" 
-                className="bg-white p-2 rounded-full shadow-lg hover:bg-blue-100 transition-colors"
-                aria-label="Email"
-              >
-                <FiMail className="w-6 h-6 text-blue-600" />
-              </a>
-            </div>
-          </div>
-        </motion.div>
       </motion.section>
 
-      <section id="about" className={`py-20 px-6 ${sectionBgClass}`}>
-        <div className="max-w-7xl mx-auto min-h-[calc(100vh-16rem)]">
-          <h2 className="text-5xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">About Me</h2>
-          <div className="grid lg:grid-cols-1 gap-12">
-
-            {/* Skills Progress Card (PrimeReact Card) */}
-            {/* About Me Card (PrimeReact Card) */}
-            <Card
-                className="dark:bg-gray-800 bg-blue-700 p-6 space-y-4 rounded-2xl p-card:rounded-2xl"
-                pt={{
-                    root: 'dark:bg-gray-800 bg-blue-700 rounded-lg p-6 space-y-4',
-                    body: 'p-0',
-                    content: 'p-0'
-                }}
-            >
-              <p className="text-blue-100 dark:text-white mb-4 text-center text-2xl">
-                I&apos;m a passionate Full Stack Developer with expertise in modern web apps using JavaScript, React, and Node.js.
-                I am also a Cloud Enthusiast with expertise in Azure Cloud Services and AI.
-                I enjoy learning new technologies and challenging myself with complex projects.
-                While I&apos;m not coding, I enjoy cooking, playing video games, and playing pickleball and tennis. 
+      {/* About Section */}
+      <Section id="about">
+        <SectionTitle>About Me</SectionTitle>
+        <div className="bg-white dark:bg-slate-800/50 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700 p-8 md:p-10">
+          <div className="grid md:grid-cols-5 gap-10 items-center">
+            {/* Left Side: Text */}
+            <div className="md:col-span-3">
+              <p className="text-lg text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
+                I&apos;m a passionate Full Stack Developer with expertise in building modern web applications using JavaScript, React, and Node.js. As a Cloud Enthusiast, I have a strong command of Azure Cloud Services and AI integration. I enjoy learning new technologies and challenging myself with complex projects.
               </p>
-            
-              <a href="/Software Development Resume 2025.pdf" target="_blank" className="text-blue-100 dark:text-blue-400 hover:underline">
-                View My Resume →
+              <a
+                href="/Software Development Resume 2025.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-lg font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 group"
+              >
+                View My Resume
+                <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
               </a>
-            </Card>
+            </div>
+            {/* Right Side: Hobbies */}
+            <div className="md:col-span-2">
+              <div className="bg-slate-100/70 dark:bg-slate-800 p-6 rounded-xl">
+                <h4 className="text-xl font-bold mb-4 text-center text-slate-800 dark:text-white">When I&apos;m not coding...</h4>
+                <ul className="space-y-4">
+                  <li className="flex items-center gap-4">
+                    <div className="bg-blue-500/10 p-2 rounded-full"><IoGameControllerOutline className="w-6 h-6 text-blue-500" /></div>
+                    <span className="font-medium text-slate-700 dark:text-slate-300">Playing video games</span>
+                  </li>
+                  <li className="flex items-center gap-4">
+                    <div className="bg-blue-500/10 p-2 rounded-full"><span className="text-xl">🎾</span></div>
+                    <span className="font-medium text-slate-700 dark:text-slate-300">Pickleball & Tennis</span>
+                  </li>
+                  <li className="flex items-center gap-4">
+                    <div className="bg-blue-500/10 p-2 rounded-full"><span className="text-xl">🍳</span></div>
+                    <span className="font-medium text-slate-700 dark:text-slate-300">Cooking new recipes</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
-
-      {/* Spacer div (Replaced PrimeReact Divider) */}
-      <div className={`h-8 w-full ${sectionBgClass}`} aria-hidden="true" />
+      </Section>
 
       {/* Skills Section */}
-      <section id="skills" className={`py-20 px-6 ${sectionBgClass}`}>
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-5xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">Skills</h2>
-          <div className="grid lg:grid-cols-1 gap-12">
-
-            {/* Skills Progress Card (PrimeReact Card) */}
-            <Card
-                className="dark:bg-gray-800 bg-sky-100 rounded-lg p-6 space-y-4"
+      <Section id="skills">
+        <SectionTitle>Technical Skills</SectionTitle>
+        <div className="bg-white dark:bg-slate-800/50 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700 p-8 md:p-10 space-y-6">
+          {skills.map((skill) => (
+            <div key={skill.name}>
+              <div className="flex justify-between items-end mb-2">
+                <span className="font-semibold text-md text-slate-700 dark:text-slate-200">{skill.name}</span>
+                <span className="text-sm text-slate-500 dark:text-slate-400">{skill.level}%</span>
+              </div>
+              <ProgressBar
+                value={skill.level}
+                showValue={false}
                 pt={{
-                    root: 'dark:bg-gray-800 bg-sky-100 rounded-lg p-6 space-y-4',
-                    body: 'p-0',
-                    content: 'p-0',
+                  root: 'h-2.5 bg-slate-200 dark:bg-slate-700 rounded-full',
+                  value: 'bg-gradient-to-r from-blue-500 to-indigo-600 h-2.5 rounded-full',
                 }}
-                title="Skills Proficiency"
-            >
-              {skills.map((skill) => (
-                // Added mb-6 for spacing between skill blocks, last:mb-0 removes margin on the last item
-                <div key={skill.name} className="mb-6 last:mb-0">
-                  <div className="flex justify-between text-sm text-blue-950 dark:text-white">
-                    {/* Added mb-3 to space text from the bar */}
-                    <span className="font-semibold mb-3">{skill.name}</span>
-                    <span className="font-semibold mb-3">{skill.level}%</span>
-                  </div>
-                  <ProgressBar
-                    value={skill.level}
-                    showValue={false}
-                    pt={{
-                      root: 'w-full bg-gray-700 rounded-full h-2',
-                      value: 'bg-gradient-to-r from-blue-500 to-indigo-600 h-2 rounded-full',
-                    }}
-                  />
-                </div>
-              ))}
-            </Card>
-          </div>
+              />
+            </div>
+          ))}
         </div>
-      </section>
-
-      {/* Spacer div (Replaced PrimeReact Divider) */}
-      <div className={`h-8 w-full ${sectionBgClass}`} aria-hidden="true" />
-
+      </Section>
+      
       {/* Experience Section */}
-      <section id="experience" className={`py-20 px-6 ${sectionBgClass}`}>
-        <div className="max-w-7xl mx-auto">
-          <Experience />
-        </div>
-      </section>
-
-      {/* Spacer div (Replaced PrimeReact Divider) */}
-      <div className={`h-8 w-full ${sectionBgClass}`} aria-hidden="true" />
+      <Section id="experience">
+          <div className="p-8 md:p-10">
+            <Experience />
+          </div>
+      </Section>
 
       {/* Projects Section */}
-      <section id="projects" className={`py-20 px-6 ${sectionBgClass}`}>
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-5xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">My Projects</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((p, i) => <ProjectCard key={p.id} project={p} index={i} />)}
-          </div>
+      <Section id="projects">
+        <SectionTitle>My Projects</SectionTitle>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {projects.map((p, i) => <ProjectCard key={p.id} project={p} index={i} />)}
         </div>
-      </section>
-
-      {/* Spacer div (Replaced PrimeReact Divider) */}
-      <div className={`h-8 w-full ${sectionBgClass}`} aria-hidden="true" />
+      </Section>
 
       {/* Footer */}
-      <footer className={`py-12 ${sectionBgClass}`}>
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col items-center space-y-4">
-            <div className="flex space-x-6 mb-6">
-              <a 
-                href="https://github.com/tfq26" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
-                aria-label="GitHub"
-              >
-                <FiGithub className="w-6 h-6" />
-              </a>
-              <a 
-                href="https://linkedin.com/in/taufeeq-ali" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <FiLinkedin className="w-6 h-6" />
-              </a>
-              <a 
-                href="mailto:taufeeq2608@gmail.com" 
-                className="text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
-                aria-label="Email"
-              >
-                <FiMail className="w-6 h-6" />
-              </a>
+      <footer id="footer-contact" className="bg-slate-100 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+        <div className="max-w-7xl mx-auto py-12 px-6">
+          <div className="flex flex-col items-center text-center">
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Let&apos;s Connect!</h3>
+            <p className="text-slate-600 dark:text-slate-400 mb-6 max-w-lg">
+              I&apos;m currently seeking new opportunities. Feel free to reach out via email or connect with me on social media.
+            </p>
+            <div className="flex space-x-6 mb-8">
+                <a href="https://github.com/tfq26" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors">
+                    <FiGithub className="w-7 h-7" />
+                </a>
+                <a href="https://linkedin.com/in/taufeeq-ali" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors">
+                    <FiLinkedin className="w-7 h-7" />
+                </a>
+                <a href="mailto:taufeeq2608@gmail.com" aria-label="Email" className="text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors">
+                    <FiMail className="w-7 h-7" />
+                </a>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
-              <div>
-                <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-2">Built With</h3>
-                <p className="text-gray-600 dark:text-gray-300">React, Tailwind CSS, Framer Motion</p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-2">Hosting</h3>
-                <p className="text-gray-600 dark:text-gray-300">Deployed on Vercel</p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-2">Attribution</h3>
-                <p className="text-gray-600 dark:text-gray-300">Icons by Icons8</p>
-              </div>
-            </div>
-
-            <div className="border-t border-gray-200 dark:border-gray-700 w-full pt-6 mt-6">
-              <p className="text-sm text-gray-500 dark:text-gray-400">
-                &copy; {new Date().getFullYear()} Taufeeq Ali. All rights reserved.
-              </p>
-            </div>
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              &copy; {new Date().getFullYear()} Taufeeq Ali. All rights reserved.
+            </p>
+             <p className="text-xs text-slate-400 dark:text-slate-500 mt-2">
+                Built with React, Tailwind CSS & Framer Motion. Deployed on Vercel.
+            </p>
           </div>
         </div>
       </footer>

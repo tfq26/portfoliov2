@@ -1,177 +1,173 @@
 import { useState, useEffect } from 'react';
-import { Dialog } from 'primereact/dialog';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Tag } from 'primereact/tag';
-import { Galleria } from 'primereact/galleria';
-import { Button } from 'primereact/button';
 import { Skeleton } from 'primereact/skeleton';
-import { ExternalLink, Github, ChevronLeft, ChevronRight, Maximize, Minimize } from 'lucide-react';
+import { ExternalLink, Github, X } from 'lucide-react';
 import PropTypes from 'prop-types';
 
 const ProjectDialog = ({ visible, onHide, project }) => {
   const [loading, setLoading] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isFullScreen, setIsFullScreen] = useState(false);
 
-  const images = project?.images || [project?.image];
+  // Fallback for projects with a single 'image' prop instead of an 'images' array
+  const images = project?.images && project.images.length > 0 ? project.images : [project?.image];
 
+  // Reset loading state and image index when the dialog is opened/closed
   useEffect(() => {
     if (visible) {
-      const timer = setTimeout(() => setLoading(false), 1000);
+      // Simulate loading time for a better user experience
+      const timer = setTimeout(() => setLoading(false), 500);
       return () => clearTimeout(timer);
     } else {
+      // Reset state when dialog is hidden
       setLoading(true);
       setActiveIndex(0);
-      setIsFullScreen(false);
     }
   }, [visible]);
+  
+  // Prevent body scroll when the dialog is open
+  useEffect(() => {
+    if (visible) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [visible]);
 
-  // Handlers
-  const showPrev = () =>
-    setActiveIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-  const showNext = () =>
-    setActiveIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-  const toggleFullScreen = () => setIsFullScreen((prev) => !prev);
-
-  const itemTemplate = (item) => (
-    <div className="relative group">
-      <img
-        src={item}
-        alt="Project"
-        style={{ width: '100%', borderRadius: '1rem', objectFit: 'cover' }}
-      />
-
-      {/* Previous Button */}
-      <button
-        onClick={showPrev}
-        className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-opacity-70"
-      >
-        <ChevronLeft size={24} />
-      </button>
-
-      {/* Next Button */}
-      <button
-        onClick={showNext}
-        className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-opacity-70"
-      >
-        <ChevronRight size={24} />
-      </button>
-
-      {/* Fullscreen Toggle */}
-      <button
-        onClick={toggleFullScreen}
-        className="absolute top-2 right-2 bg-black bg-opacity-50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-opacity-70"
-      >
-        {isFullScreen ? <Minimize size={20} /> : <Maximize size={20} />}
-      </button>
-    </div>
-  );
+  if (!visible) return null;
+  
+  const backdropVariants = {
+    visible: { opacity: 1 },
+    hidden: { opacity: 0 },
+  };
+  
+  const modalVariants = {
+    hidden: { y: "50px", opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 100, damping: 15 } },
+    exit: { y: "50px", opacity: 0, transition: { duration: 0.2 } },
+  };
 
   return (
-    <Dialog
-      header={project?.name || 'Project Details'}
-      visible={visible}
-      onHide={onHide}
-      style={{ width: '90vw', maxWidth: '1000px' }}
-      className="rounded-2xl overflow-hidden bg-gray-900"
-      draggable={false}
-      blockScroll={true}
-      dismissableMask
-      contentStyle={{
-        maxHeight: '80vh',
-        overflowY: 'auto',
-        backgroundColor: 'var(--surface-ground)',
-      }}
-    >
-      {/* Project Gallery */}
-      <div
-        className={`relative w-full mb-5 ${
-          isFullScreen ? 'fixed inset-0 z-50 p-4 bg-gray-900' : ''
-        }`}
-      >
-        {loading ? (
-          <Skeleton height="350px" borderRadius="1rem" />
-        ) : (
-          <>
-            <Galleria
-              value={images}
-              numVisible={1}
-              circular
-              showThumbnails={false}
-              showIndicators={false}
-              activeIndex={activeIndex}
-              onItemChange={(e) => setActiveIndex(e.index)}
-              item={itemTemplate}
-              style={{ maxWidth: '100%' }}
-              className="rounded-2xl"
-            />
-            {project.inProgress && (
-              <Tag
-                value="In Progress"
-                severity="warning"
-                className="absolute top-3 left-3 text-sm font-medium"
-              />
-            )}
-          </>
-        )}
-      </div>
+    <AnimatePresence>
+      {visible && (
+        <motion.div
+          key="backdrop"
+          variants={backdropVariants}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          onClick={onHide}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+        >
+          <motion.div
+            key="modal"
+            variants={modalVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            onClick={(e) => e.stopPropagation()}
+            className="relative flex flex-col w-full max-w-5xl max-h-[90vh] bg-white rounded-2xl shadow-xl dark:bg-slate-800/95 border border-slate-200 dark:border-slate-700"
+          >
+            {/* --- Header & Close Button --- */}
+            <header className="flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-700 flex-shrink-0">
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white">{project?.name}</h2>
+              <button
+                onClick={onHide}
+                className="p-2 rounded-full text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-700 transition-colors"
+                aria-label="Close dialog"
+              >
+                <X size={24} />
+              </button>
+            </header>
 
-      {/* Project Details */}
-      <div className="flex flex-col gap-4 px-3 sm:px-5 pb-4">
-        {loading ? (
-          <Skeleton width="40%" height="2rem" />
-        ) : (
-          <p className="text-gray-300 leading-relaxed">{project.shortDescription}</p>
-        )}
+            {/* --- Main Content --- */}
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-6 p-6 overflow-y-auto">
+              {/* Left Column: Gallery */}
+              <div className="md:col-span-3">
+                <div className="relative mb-3 aspect-video overflow-hidden rounded-xl">
+                  {loading ? (
+                    <Skeleton className="w-full h-full !rounded-xl" />
+                  ) : (
+                    <img
+                      src={images[activeIndex]}
+                      alt={`${project.name} screenshot ${activeIndex + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
+                </div>
+                {/* Thumbnails */}
+                <div className="flex gap-2">
+                  {loading ? (
+                    Array.from({ length: 4 }).map((_, i) => (
+                      <Skeleton key={i} className="w-1/4 h-16 !rounded-lg" />
+                    ))
+                  ) : (
+                    images.map((img, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setActiveIndex(i)}
+                        className={`w-1/4 overflow-hidden rounded-lg outline-none ring-offset-2 ring-offset-white dark:ring-offset-slate-800 focus-visible:ring-2 ${
+                          activeIndex === i ? 'ring-2 ring-blue-500' : 'opacity-60 hover:opacity-100'
+                        }`}
+                      >
+                        <img src={img} alt={`Thumbnail ${i + 1}`} className="w-full h-16 object-cover" />
+                      </button>
+                    ))
+                  )}
+                </div>
+              </div>
 
-        <div className="flex flex-wrap gap-2">
-          {loading
-            ? Array.from({ length: 3 }).map((_, i) => (
-                <Skeleton key={i} width="6rem" height="2rem" borderRadius="1rem" />
-              ))
-            : project.technologies.map((tech, i) => (
-                <Tag
-                  key={i}
-                  value={tech}
-                  className="bg-blue-500 text-white border-none px-3 py-1 rounded-xl"
-                />
-              ))}
-        </div>
+              {/* Right Column: Details */}
+              <div className="md:col-span-2 flex flex-col">
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {loading ? (
+                    Array.from({ length: 4 }).map((_, i) => <Skeleton key={i} width="5rem" height="1.75rem" className="!rounded-full" />)
+                  ) : (
+                    project.technologies.map((tech) => (
+                      <span key={tech} className="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-800 dark:bg-blue-500/10 dark:text-blue-300">
+                        {tech}
+                      </span>
+                    ))
+                  )}
+                </div>
+                
+                <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">About this project</h3>
+                {loading ? (
+                    <div className="space-y-2">
+                        <Skeleton width="100%" height="1rem" />
+                        <Skeleton width="100%" height="1rem" />
+                        <Skeleton width="75%" height="1rem" />
+                    </div>
+                ) : (
+                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                        {project.description}
+                    </p>
+                )}
 
-        <div className="mt-3">
-          <h3 className="text-xl font-semibold text-white mb-2">About This Project</h3>
-          {loading ? (
-            <>
-              <Skeleton width="90%" />
-              <Skeleton width="80%" />
-              <Skeleton width="85%" />
-            </>
-          ) : (
-            <p className="text-gray-300 leading-relaxed text-lg">{project.description}</p>
-          )}
-        </div>
-
-        {!loading && (
-          <div className="flex flex-wrap gap-3 mt-4">
-            {project.demo && (
-              <Button
-                icon={<ExternalLink size={16} />}
-                label="Live Demo"
-                className="p-button-text text-blue-400 hover:text-blue-300"
-                onClick={() => window.open(project.demo, '_blank')}
-              />
-            )}
-            {project.github && (
-              <Button
-                icon={<Github size={16} />}
-                label="GitHub"
-                className="p-button-text text-blue-400 hover:text-blue-300"
-                onClick={() => window.open(project.github, '_blank')}
-              />
-            )}
-          </div>
-        )}
-      </div>
-    </Dialog>
+                {/* --- Action Buttons --- */}
+                {!loading && (
+                    <div className="flex flex-col sm:flex-row gap-3 mt-auto pt-6">
+                        {project.demo && (
+                            <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors">
+                                <ExternalLink size={16} /> Live Demo
+                            </a>
+                        )}
+                        {project.github && (
+                            <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full px-4 py-2 rounded-lg bg-slate-200 text-slate-800 font-semibold hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600 transition-colors">
+                                <Github size={16} /> GitHub
+                            </a>
+                        )}
+                    </div>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
@@ -179,20 +175,26 @@ ProjectDialog.propTypes = {
   visible: PropTypes.bool.isRequired,
   onHide: PropTypes.func.isRequired,
   project: PropTypes.shape({
-    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    name: PropTypes.string.isRequired,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    name: PropTypes.string,
     demo: PropTypes.string,
     github: PropTypes.string,
-    description: PropTypes.string.isRequired,
-    shortDescription: PropTypes.string,
+    description: PropTypes.string,
     technologies: PropTypes.arrayOf(PropTypes.string),
-    icon: PropTypes.string,
     image: PropTypes.string,
     images: PropTypes.arrayOf(PropTypes.string),
-    status: PropTypes.string,
-    working: PropTypes.bool,
-    inProgress: PropTypes.bool,
-  }).isRequired,
+  }),
+};
+
+// Default props in case a null project is passed while the dialog is closing
+ProjectDialog.defaultProps = {
+  project: {
+    id: 'default',
+    name: 'Loading...',
+    description: 'Loading project details...',
+    technologies: [],
+    images: [],
+  },
 };
 
 export default ProjectDialog;
