@@ -1,0 +1,57 @@
+---
+const skillCategories = [
+  {
+    title: "Frontend",
+    skills: [
+      { name: 'React', icon: '/icons/react-logo-svgrepo-com.svg' },
+      { name: 'Vue.js', icon: '/icons/vue-vuejs-javascript-js-framework-svgrepo-com.svg' },
+      { name: 'HTML/CSS', icon: '/icons/html-5-svgrepo-com.svg' },
+    ]
+  },
+  {
+    title: "Backend",
+    skills: [
+      { name: 'Node.js', icon: '/icons/node-js-svgrepo-com.svg' },
+      { name: 'Java', icon: '/icons/java-svgrepo-com.svg' },
+      { name: 'C# / .NET', icon: '/icons/dotnet-svgrepo-com.svg' },
+      { name: 'SQL', icon: '/icons/Azure_SQL_cloud_icon.svg' },
+    ]
+  },
+  {
+    title: "Cloud & AI",
+    skills: [
+      { name: 'Azure', icon: '/icons/azure-2.svg' },
+      { name: 'Gemini AI', icon: '/icons/Google_Gemini_icon_2025.svg' },
+      { name: 'ChatGPT', icon: '/icons/ChatGPT-Logo.svg' },
+    ]
+  }
+];
+---
+<section id="skills" class="w-full py-20 px-6 reveal bg-slate-50 dark:bg-black/20">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-500">
+      Technical Arsenal
+    </h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {skillCategories.map((category, index) => (
+        <div class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg border border-slate-100 dark:border-slate-700 p-8 hover:transform hover:-translate-y-1 transition-transform duration-300">
+          <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+            {index === 0 && <span class="text-blue-500">❖</span>}
+            {index === 1 && <span class="text-indigo-500">⚡</span>}
+            {index === 2 && <span class="text-purple-500">☁</span>}
+            {category.title}
+          </h3>
+          <div class="grid grid-cols-2 gap-4">
+            {category.skills.map((skill) => (
+              <div class="flex flex-col items-center justify-center p-4 bg-slate-50 dark:bg-slate-700/50 rounded-xl hover:bg-blue-50 dark:hover:bg-blue-500/10 transition-colors group">
+                <img src={skill.icon} alt={skill.name} class="w-12 h-12 mb-3 object-contain transition-transform group-hover:scale-110" />
+                <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 text-center">{skill.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

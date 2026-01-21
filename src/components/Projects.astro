@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import ProjectCard from './ProjectCard.astro';
+
+const projects = await getCollection('projects');
+const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
+---
+<section id="projects" class="w-full py-16 md:py-24 px-6 reveal">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-400 dark:to-indigo-500">
+        Featured Projects
+      </h2>
+      <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+        A selection of my recent work, ranging from complex enterprise applications to creative side projects.
+      </p>
+    </div>
+    <div class="flex flex-wrap justify-center gap-10">
+      {sortedProjects.map((project) => (
+        <div class="w-full md:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.7rem)] max-w-sm">
+          <ProjectCard project={project} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
