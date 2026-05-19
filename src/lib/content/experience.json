@@ -1,0 +1,18 @@
+[
+	{
+		"id": "argo-intern",
+		"label": "Summer 2025",
+		"role": "Software Development Intern",
+		"company": "ARGO Data",
+		"description": "Supported critical infrastructure for major banking customers on the Early Detection & Monitoring Service team.",
+		"technologies": [".NET", "JavaScript", "Vue.js", "MapLibre"]
+	},
+	{
+		"id": "argo-apprentice",
+		"label": "2025 - 2026",
+		"role": "Software Engineering Apprentice",
+		"company": "ARGO Data",
+		"description": "Following an exceptional internship performance, I focus on architecting modern features and enhancing the scalability of flagship banking platforms.",
+		"technologies": [".NET 8+", "React", "PostgreSQL", "Docker"]
+	}
+]

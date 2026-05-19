@@ -1,2 +1,0 @@
-# Taufeeq Ali's Portfolio!
-

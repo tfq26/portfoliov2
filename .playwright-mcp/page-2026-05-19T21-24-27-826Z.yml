@@ -1,0 +1,371 @@
+- generic [ref=e2]:
+  - navigation [ref=e3]:
+    - generic [ref=e4]:
+      - link "Taufeeq Ali" [ref=e5] [cursor=pointer]:
+        - /url: "#home"
+        - generic [ref=e6]: Taufeeq Ali
+      - generic [ref=e7]:
+        - link "Home" [ref=e8] [cursor=pointer]:
+          - /url: "#home"
+        - link "About" [ref=e9] [cursor=pointer]:
+          - /url: "#about"
+        - link "Skills" [ref=e10] [cursor=pointer]:
+          - /url: "#skills"
+        - link "Projects" [ref=e11] [cursor=pointer]:
+          - /url: "#projects"
+        - link "Connect" [ref=e12] [cursor=pointer]:
+          - /url: https://linkedin.com/in/taufeeq-ali
+  - main [ref=e13]:
+    - generic [ref=e15]:
+      - heading "Designing the future" [level=1] [ref=e16]: Designing the future
+      - generic [ref=e17]: Starts with a question
+      - paragraph [ref=e18]: I'm Taufeeq Ali. A Senior Computer Science student and Software Engineer focused on building scalable systems, cloud infrastructure, and intelligent user experiences.
+      - generic [ref=e19]:
+        - link "Explore Projects" [ref=e20] [cursor=pointer]:
+          - /url: "#projects"
+        - link "The Journey" [ref=e21] [cursor=pointer]:
+          - /url: "#about"
+      - img "System Mockup" [ref=e24]
+    - generic [ref=e29]:
+      - generic [ref=e30]:
+        - generic [ref=e31]: The Journey
+        - heading "Crafting Robust Technical Foundations" [level=2] [ref=e32]:
+          - text: Crafting Robust
+          - text: Technical Foundations
+        - generic [ref=e33]:
+          - paragraph [ref=e34]: I am a Computer Science student at the University of Texas at Dallas with a deep-rooted passion for architecting scalable, high-performance web applications. My interest in software engineering began with a curiosity for how complex systems operate behind the scenes, which evolved into a focus on Full Stack software development.
+          - paragraph [ref=e35]: Beyond standard development, I am a Cloud Enthusiast with a particular focus on Azure Cloud Services and the integration of Artificial Intelligence into user-centric products. I specialize in bridging the gap between human-centric design and powerful, efficient engineering.
+        - generic [ref=e36]:
+          - link "Download CV" [ref=e37] [cursor=pointer]:
+            - /url: /Software Development Resume 2026.pdf
+          - generic [ref=e40]: Open for Opportunities
+      - generic [ref=e42]:
+        - heading "Beyond the IDE" [level=3] [ref=e44]
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - generic [ref=e47]: 🎮
+            - generic [ref=e48]:
+              - heading "Systems Architecture" [level=4] [ref=e49]
+              - paragraph [ref=e50]: I spend my free time exploring low-level systems and game engine architecture.
+          - generic [ref=e51]:
+            - generic [ref=e52]: 🎾
+            - generic [ref=e53]:
+              - heading "Pickleball & Tennis" [level=4] [ref=e54]
+              - paragraph [ref=e55]: Maintaining peak mental performance through high-intensity physical strategy.
+          - generic [ref=e56]:
+            - generic [ref=e57]: 🍳
+            - generic [ref=e58]:
+              - heading "Gastronomy" [level=4] [ref=e59]
+              - paragraph [ref=e60]: Cooking is like refactoring—balancing ingredients to create something exceptional.
+        - paragraph [ref=e62]: "\"The best code is not just functional, but an elegant solution to a human problem.\""
+    - generic [ref=e64]:
+      - generic [ref=e65]:
+        - heading "Technical Proficiency." [level=2] [ref=e66]
+        - paragraph [ref=e67]: shuffling through the core technologies that power my architectural decisions and engineering solutions.
+      - generic [ref=e72]:
+        - generic [ref=e73]:
+          - img "React" [ref=e75]
+          - generic [ref=e76]: React
+        - generic [ref=e77]:
+          - img "Vue.js" [ref=e79]
+          - generic [ref=e80]: Vue.js
+        - generic [ref=e81]:
+          - img "Svelte" [ref=e83]
+          - generic [ref=e84]: Svelte
+        - generic [ref=e85]:
+          - img "Next.js" [ref=e87]
+          - generic [ref=e88]: Next.js
+        - generic [ref=e89]:
+          - img "Tailwind" [ref=e91]
+          - generic [ref=e92]: Tailwind
+        - generic [ref=e93]:
+          - img "TypeScript" [ref=e95]
+          - generic [ref=e96]: TypeScript
+        - generic [ref=e97]:
+          - img "Node.js" [ref=e99]
+          - generic [ref=e100]: Node.js
+        - generic [ref=e101]:
+          - img "DotNet" [ref=e103]
+          - generic [ref=e104]: DotNet
+        - generic [ref=e105]:
+          - img "Java" [ref=e107]
+          - generic [ref=e108]: Java
+        - generic [ref=e109]:
+          - img "PostgreSQL" [ref=e111]
+          - generic [ref=e112]: PostgreSQL
+        - generic [ref=e113]:
+          - img "MongoDB" [ref=e115]
+          - generic [ref=e116]: MongoDB
+        - generic [ref=e117]:
+          - img "Docker" [ref=e119]
+          - generic [ref=e120]: Docker
+        - generic [ref=e121]:
+          - img "Azure" [ref=e123]
+          - generic [ref=e124]: Azure
+        - generic [ref=e125]:
+          - img "AWS" [ref=e127]
+          - generic [ref=e128]: AWS
+        - generic [ref=e129]:
+          - img "Firebase" [ref=e131]
+          - generic [ref=e132]: Firebase
+        - generic [ref=e133]:
+          - img "OpenAI" [ref=e135]
+          - generic [ref=e136]: OpenAI
+        - generic [ref=e137]:
+          - img "React" [ref=e139]
+          - generic [ref=e140]: React
+        - generic [ref=e141]:
+          - img "Vue.js" [ref=e143]
+          - generic [ref=e144]: Vue.js
+        - generic [ref=e145]:
+          - img "Svelte" [ref=e147]
+          - generic [ref=e148]: Svelte
+        - generic [ref=e149]:
+          - img "Next.js" [ref=e151]
+          - generic [ref=e152]: Next.js
+        - generic [ref=e153]:
+          - img "Tailwind" [ref=e155]
+          - generic [ref=e156]: Tailwind
+        - generic [ref=e157]:
+          - img "TypeScript" [ref=e159]
+          - generic [ref=e160]: TypeScript
+        - generic [ref=e161]:
+          - img "Node.js" [ref=e163]
+          - generic [ref=e164]: Node.js
+        - generic [ref=e165]:
+          - img "DotNet" [ref=e167]
+          - generic [ref=e168]: DotNet
+        - generic [ref=e169]:
+          - img "Java" [ref=e171]
+          - generic [ref=e172]: Java
+        - generic [ref=e173]:
+          - img "PostgreSQL" [ref=e175]
+          - generic [ref=e176]: PostgreSQL
+        - generic [ref=e177]:
+          - img "MongoDB" [ref=e179]
+          - generic [ref=e180]: MongoDB
+        - generic [ref=e181]:
+          - img "Docker" [ref=e183]
+          - generic [ref=e184]: Docker
+        - generic [ref=e185]:
+          - img "Azure" [ref=e187]
+          - generic [ref=e188]: Azure
+        - generic [ref=e189]:
+          - img "AWS" [ref=e191]
+          - generic [ref=e192]: AWS
+        - generic [ref=e193]:
+          - img "Firebase" [ref=e195]
+          - generic [ref=e196]: Firebase
+        - generic [ref=e197]:
+          - img "OpenAI" [ref=e199]
+          - generic [ref=e200]: OpenAI
+        - generic [ref=e201]:
+          - img "React" [ref=e203]
+          - generic [ref=e204]: React
+        - generic [ref=e205]:
+          - img "Vue.js" [ref=e207]
+          - generic [ref=e208]: Vue.js
+        - generic [ref=e209]:
+          - img "Svelte" [ref=e211]
+          - generic [ref=e212]: Svelte
+        - generic [ref=e213]:
+          - img "Next.js" [ref=e215]
+          - generic [ref=e216]: Next.js
+        - generic [ref=e217]:
+          - img "Tailwind" [ref=e219]
+          - generic [ref=e220]: Tailwind
+        - generic [ref=e221]:
+          - img "TypeScript" [ref=e223]
+          - generic [ref=e224]: TypeScript
+        - generic [ref=e225]:
+          - img "Node.js" [ref=e227]
+          - generic [ref=e228]: Node.js
+        - generic [ref=e229]:
+          - img "DotNet" [ref=e231]
+          - generic [ref=e232]: DotNet
+        - generic [ref=e233]:
+          - img "Java" [ref=e235]
+          - generic [ref=e236]: Java
+        - generic [ref=e237]:
+          - img "PostgreSQL" [ref=e239]
+          - generic [ref=e240]: PostgreSQL
+        - generic [ref=e241]:
+          - img "MongoDB" [ref=e243]
+          - generic [ref=e244]: MongoDB
+        - generic [ref=e245]:
+          - img "Docker" [ref=e247]
+          - generic [ref=e248]: Docker
+        - generic [ref=e249]:
+          - img "Azure" [ref=e251]
+          - generic [ref=e252]: Azure
+        - generic [ref=e253]:
+          - img "AWS" [ref=e255]
+          - generic [ref=e256]: AWS
+        - generic [ref=e257]:
+          - img "Firebase" [ref=e259]
+          - generic [ref=e260]: Firebase
+        - generic [ref=e261]:
+          - img "OpenAI" [ref=e263]
+          - generic [ref=e264]: OpenAI
+      - generic [ref=e266]:
+        - button "Category Frontend React, Vue, Svelte, Tailwind" [ref=e267]:
+          - generic [ref=e269]:
+            - generic [ref=e272]: Category
+            - heading "Frontend" [level=3] [ref=e273]
+            - paragraph [ref=e274]: React, Vue, Svelte, Tailwind
+          - img [ref=e276]
+        - button "Category Backend Node.js, Java, .NET, SQL" [ref=e278]:
+          - generic [ref=e280]:
+            - generic [ref=e283]: Category
+            - heading "Backend" [level=3] [ref=e284]
+            - paragraph [ref=e285]: Node.js, Java, .NET, SQL
+          - img [ref=e287]
+        - button "Category Cloud & Data Azure, AWS, Docker, NoSQL" [ref=e289]:
+          - generic [ref=e291]:
+            - generic [ref=e294]: Category
+            - heading "Cloud & Data" [level=3] [ref=e295]
+            - paragraph [ref=e296]: Azure, AWS, Docker, NoSQL
+          - img [ref=e298]
+        - button "Category AI / ML Gemini, OpenAI, LangChain" [ref=e300]:
+          - generic [ref=e302]:
+            - generic [ref=e305]: Category
+            - heading "AI / ML" [level=3] [ref=e306]
+            - paragraph [ref=e307]: Gemini, OpenAI, LangChain
+          - img [ref=e309]
+    - generic [ref=e312]:
+      - generic [ref=e313]:
+        - heading "Technical Chronicle." [level=2] [ref=e314]
+        - paragraph [ref=e315]: A timeline of my growth in the industry, from initial internships to architectural leadership in academic and professional projects.
+      - generic [ref=e316]:
+        - generic [ref=e317]:
+          - heading "Summer 2025" [level=3] [ref=e321]
+          - generic [ref=e323]:
+            - heading "Software Development Intern" [level=3] [ref=e324]
+            - generic [ref=e325]: ARGO Data
+            - paragraph [ref=e326]: Supported critical infrastructure for major banking customers on the Early Detection & Monitoring Service team.
+            - generic [ref=e327]:
+              - generic [ref=e328]: .NET
+              - generic [ref=e329]: JavaScript
+              - generic [ref=e330]: Vue.js
+              - generic [ref=e331]: MapLibre
+        - generic [ref=e332]:
+          - heading "2025 - 2026" [level=3] [ref=e336]
+          - generic [ref=e338]:
+            - heading "Software Engineering Apprentice" [level=3] [ref=e339]
+            - generic [ref=e340]: ARGO Data
+            - paragraph [ref=e341]: Following an exceptional internship performance, I focus on architecting modern features and enhancing the scalability of flagship banking platforms.
+            - generic [ref=e342]:
+              - generic [ref=e343]: .NET 8+
+              - generic [ref=e344]: React
+              - generic [ref=e345]: PostgreSQL
+              - generic [ref=e346]: Docker
+    - generic [ref=e348]:
+      - generic [ref=e349]:
+        - generic [ref=e350]: Engineering Portfolio
+        - generic [ref=e351]:
+          - heading "Technical Portfolio." [level=2] [ref=e352]:
+            - text: Technical
+            - text: Portfolio.
+          - paragraph [ref=e353]: A selection of systems I've designed and engineered across various domains, from browser internals and secure vaults to distributed intelligence platforms.
+      - generic [ref=e354]:
+        - generic [ref=e355]:
+          - img "Pegasus Intelligence" [ref=e358]
+          - generic [ref=e360]:
+            - generic [ref=e361]:
+              - img [ref=e362]
+              - strong [ref=e367]: Pegasus Intelligence
+            - paragraph [ref=e369]: High-performance data workspace merging database management with an AI-driven natural language querying engine.
+        - generic [ref=e370]:
+          - img "Tempo Browser" [ref=e373]
+          - generic [ref=e375]:
+            - generic [ref=e376]:
+              - img [ref=e377]
+              - strong [ref=e381]: Tempo Browser
+            - paragraph [ref=e383]: A minimalist, performance-hardened browser built with Rust and Lit, featuring deterministic startup and resource intelligence.
+        - generic [ref=e384]:
+          - img "Cetus Platform" [ref=e387]
+          - generic [ref=e389]:
+            - generic [ref=e390]:
+              - img [ref=e391]
+              - strong [ref=e395]: Cetus Platform
+            - paragraph [ref=e397]: Decision intelligence platform utilizing Go orchestration and Python evaluation services for complex idea simulations.
+        - generic [ref=e398]:
+          - img "Blitz Financial" [ref=e401]
+          - generic [ref=e403]:
+            - generic [ref=e404]:
+              - img [ref=e405]
+              - strong [ref=e408]: Blitz Financial
+            - paragraph [ref=e410]: Enterprise-grade fintech dashboard and API infrastructure designed for high-trust financial signal processing.
+        - generic [ref=e411]:
+          - img "Janus Vault" [ref=e414]
+          - generic [ref=e416]:
+            - generic [ref=e417]:
+              - img [ref=e418]
+              - strong [ref=e422]: Janus Vault
+            - paragraph [ref=e424]: Secure credential management system and infrastructure vault for managing sensitive enterprise secrets.
+        - generic [ref=e425]:
+          - img "Kerbex Auth" [ref=e428]
+          - generic [ref=e430]:
+            - generic [ref=e431]:
+              - img [ref=e432]
+              - strong [ref=e442]: Kerbex Auth
+            - paragraph [ref=e444]: Custom, extensible OIDC-compliant authentication worker replacing third-party services with localized data control.
+        - generic [ref=e445]:
+          - img "Libra Assistant" [ref=e448]
+          - generic [ref=e450]:
+            - generic [ref=e451]:
+              - img [ref=e452]
+              - strong [ref=e465]: Libra Assistant
+            - paragraph [ref=e467]: Technical troubleshooting and Q&A engine built on Azure AI for precise guidance in distributed systems.
+        - generic [ref=e468]:
+          - img "Orion Distributed" [ref=e471]
+          - generic [ref=e473]:
+            - generic [ref=e474]:
+              - img [ref=e475]
+              - strong [ref=e479]: Orion Distributed
+            - paragraph [ref=e481]: Resource monitoring and storage service architecture managing jobs, telemetry, and distributed storage operations.
+  - contentinfo [ref=e482]:
+    - generic [ref=e483]:
+      - generic [ref=e484]:
+        - heading "Building the future. Engineering today." [level=2] [ref=e486]:
+          - text: Building the future.
+          - text: Engineering today.
+        - generic [ref=e487]:
+          - link "Start a conversation" [ref=e488] [cursor=pointer]:
+            - /url: mailto:taufeeqali@gmail.com
+          - link "View LinkedIn" [ref=e489] [cursor=pointer]:
+            - /url: https://linkedin.com/in/taufeeq-ali
+      - generic [ref=e490]:
+        - generic [ref=e491]:
+          - generic [ref=e492]: Taufeeq Ali
+          - paragraph [ref=e493]: Engineer, Designer, and Computer Science Student at the University of Texas at Dallas.
+        - generic [ref=e494]:
+          - generic [ref=e495]: Explore
+          - list [ref=e496]:
+            - listitem [ref=e497]:
+              - link "Home" [ref=e498] [cursor=pointer]:
+                - /url: "#home"
+            - listitem [ref=e499]:
+              - link "About" [ref=e500] [cursor=pointer]:
+                - /url: "#about"
+            - listitem [ref=e501]:
+              - link "Skills" [ref=e502] [cursor=pointer]:
+                - /url: "#skills"
+            - listitem [ref=e503]:
+              - link "Projects" [ref=e504] [cursor=pointer]:
+                - /url: "#projects"
+        - generic [ref=e505]:
+          - generic [ref=e506]: Social
+          - list [ref=e507]:
+            - listitem [ref=e508]:
+              - link "GitHub" [ref=e509] [cursor=pointer]:
+                - /url: https://github.com/tfq26
+            - listitem [ref=e510]:
+              - link "LinkedIn" [ref=e511] [cursor=pointer]:
+                - /url: https://linkedin.com/in/taufeeq-ali
+            - listitem [ref=e512]:
+              - link "Twitter" [ref=e513] [cursor=pointer]:
+                - /url: https://twitter.com
+        - generic [ref=e514]:
+          - generic [ref=e515]: © 2026 Taufeeq Ali
+          - generic [ref=e516]: Crafted with precision.

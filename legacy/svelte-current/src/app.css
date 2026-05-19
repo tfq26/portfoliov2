@@ -1,0 +1,107 @@
+/* stylelint-disable */
+@import "tailwindcss";
+/* @theme */
+
+@theme {
+  --color-brand-gold: #eab308;
+  --color-brand-blue: #3b82f6;
+  --color-brand-purple: #8b5cf6;
+  --color-bg-dark: #000000;
+  --color-bg-card: #0a0a0a;
+  --color-border-subtle: rgba(255, 255, 255, 0.05);
+}
+
+:root {
+  --bg-dark: #000000;
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --accent-gold: #d4af37;
+  --accent-blue: #3b82f6;
+  --glass-bg: rgba(255, 255, 255, 0.02);
+  --glass-border: rgba(255, 255, 255, 0.05);
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white font-sans antialiased selection:bg-white/20;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tighter font-bold;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-[#0a0a0a] border border-white/5 rounded-2xl overflow-hidden transition-all duration-500;
+  }
+
+  .glass-card:hover {
+    @apply border-white/10 bg-white/[0.03];
+  }
+
+  .text-gradient-white {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-white to-white/40;
+  }
+
+  .glow-border {
+    position: relative;
+  }
+
+  .glow-border::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    z-index: -1;
+    border-radius: inherit;
+    transition: opacity 0.5s;
+    opacity: 0;
+  }
+
+  .glow-border:hover::before {
+    opacity: 1;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2a2a2a;
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}

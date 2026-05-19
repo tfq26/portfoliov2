@@ -1,6 +1,8 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0">
     <option name="myName" value="Project Default" />
-    <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="CssUnknownAtRule" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myCustomAtRules" value="tailwind,apply,layer,config,theme,source,plugin,reference,utility,custom-variant,variant" />
+    </inspection_tool>
   </profile>
 </component>
