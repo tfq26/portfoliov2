@@ -12,7 +12,7 @@
 		},
 		{
 			label: 'Email',
-			href: 'mailto:taufeeqali@gmail.com',
+			href: 'mailto:taufeeq2608@gmail.com',
 			icon: 'https://api.iconify.design/material-symbols:mail-outline.svg?color=white'
 		},
 		{
