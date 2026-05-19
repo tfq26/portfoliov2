@@ -38,6 +38,6 @@ declare module "$app/types" {
 		};
 		Pathname(): "/";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
-		Asset(): "/.DS_Store" | "/icons/argo_logo.jpeg" | "/images/Taufeeq1.webp" | "/images/Taufeeq2.jpeg" | "/images/Taufeeq3.JPG" | "/images/Toros.webp" | "/images/libra1.webp" | "/images/libra2.webp" | "/images/libra3.webp" | "/images/pegasus1.png" | "/images/pegasus2.png" | "/images/pegasus3.png" | string & {};
+		Asset(): "/.DS_Store" | "/Software Development Resume 2026.pdf" | "/icons/argo_logo.jpeg" | "/images/Taufeeq1.webp" | "/images/Taufeeq2.jpeg" | "/images/Taufeeq3.JPG" | "/images/Toros.webp" | "/images/libra1.webp" | "/images/libra2.webp" | "/images/libra3.webp" | "/images/pegasus1.png" | "/images/pegasus2.png" | "/images/pegasus3.png" | string & {};
 	}
 }
