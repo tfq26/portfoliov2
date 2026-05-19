@@ -41,7 +41,7 @@
                         target="_blank"
                         class="rounded-full bg-white px-8 py-4 text-center font-bold text-black transition-all duration-300 hover:bg-brand-gold hover:text-white"
                     >
-                        Download CV
+                        View Resume
                     </a>
                 </div>
             </div>
