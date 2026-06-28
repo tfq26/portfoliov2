@@ -9,10 +9,10 @@
 	<div class="z-10 flex w-full max-w-7xl flex-col items-center" in:fly={{ y: 20, duration: 1000, delay: 200 }}>
 		
 		<h1 class="mb-5 max-w-[12ch] text-[3.1rem] font-bold leading-[0.98] tracking-tighter min-[380px]:text-6xl md:mb-8 md:max-w-none md:text-8xl lg:text-[120px]">
-			Designing a future <br />
+			Building systems <br />
 		</h1>
 
-		<span class="mb-6 font-bold leading-tight tracking-tighter text-yellow-500 min-[380px]:text-2xl md:mb-8 md:text-4xl lg:text-[40px]">built to solve problems</span>
+		<span class="mb-6 font-bold leading-tight tracking-tighter text-yellow-500 min-[380px]:text-2xl md:mb-8 md:text-4xl lg:text-[40px]">that scale and perform</span>
 
 		<p class="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-white/50 md:mb-12 md:text-xl">
 			Hi, I'm <span class="text-yellow-50">Taufeeq Ali</span>. A
@@ -54,6 +54,9 @@
 						src="/images/Taufeeq1.webp" 
 						alt="Taufeeq Ali" 
 						class="aspect-[4/5] h-auto w-full object-cover opacity-80 transition-opacity duration-1000 group-hover:opacity-100"
+						loading="eager"
+						fetchpriority="high"
+						decoding="async"
 					/>
 
 				</div>
@@ -63,6 +66,9 @@
 						src="/images/Taufeeq2.jpeg" 
 						alt="Taufeeq Ali" 
 						class="aspect-[4/5] h-auto w-full object-cover opacity-80 transition-opacity duration-1000 group-hover:opacity-100"
+						loading="eager"
+						fetchpriority="high"
+						decoding="async"
 					/>
 
 				</div>
@@ -72,6 +78,9 @@
 						src="/images/Taufeeq3.JPG" 
 						alt="Taufeeq Ali" 
 						class="aspect-[4/5] h-auto w-full object-cover opacity-80 transition-opacity duration-1000 group-hover:opacity-100"
+						loading="eager"
+						fetchpriority="high"
+						decoding="async"
 					/>
 				</div>
 			</div>

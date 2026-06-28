@@ -8,8 +8,7 @@
                 <h2
                     class="mb-6 text-3xl font-bold tracking-tight min-[380px]:text-4xl md:mb-8 md:text-6xl"
                 >
-                    Crafting <span class="text-yellow-500">Robust</span> <br /> Technical
-                    Foundations
+                    Engineering <span class="text-yellow-500">Reliable</span> <br /> Backend Services
                 </h2>
                 <div
                     class="space-y-5 text-base leading-relaxed text-white/60 md:space-y-6 md:text-lg"
@@ -60,7 +59,7 @@
                             <div
                                 class="flex h-11 w-11 shrink-0 items-center justify-center text-xl sm:h-12 sm:w-12 sm:text-2xl"
                             >
-                                🎮
+                                🍳
                             </div>
                             <div>
                                 <h4 class="mb-1 font-bold text-white">

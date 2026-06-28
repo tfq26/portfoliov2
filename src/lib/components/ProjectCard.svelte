@@ -34,7 +34,7 @@
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div 
-    class="group glass-card relative flex flex-col h-full border-white/5 hover:border-white/10 transition-all duration-700 cursor-pointer overflow-hidden" 
+    class="group relative flex flex-col h-full bg-[#111] border border-white/10 rounded-2xl hover:border-white/20 transition-all duration-300 cursor-pointer overflow-hidden" 
     onclick={openModal}
 >
 	<!-- Image Section -->
@@ -44,6 +44,7 @@
 			alt={project.title}
 			class="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
 			loading="lazy"
+			decoding="async"
 		/>
 		<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
 	</div>
@@ -57,15 +58,11 @@
 		</div>
 
 		<div class="mt-auto pt-6 flex items-center justify-between border-t border-white/5">
-			<div class="flex gap-2">
-				{#each project.tags.slice(0, 3) as tech}
-					<span class="text-[10px] font-bold uppercase tracking-widest text-white/20">
-						{tech}
-					</span>
-				{/each}
-			</div>
-			<span class="text-[10px] font-bold uppercase tracking-widest text-brand-gold opacity-0 group-hover:opacity-100 transition-opacity">
-				View Case Study →
+			<span class="text-[10px] font-medium uppercase tracking-widest text-white/40 truncate mr-4">
+				{project.tags.join(' • ')}
+			</span>
+			<span class="text-[10px] font-bold uppercase tracking-widest text-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+				View →
 			</span>
 		</div>
 	</div>
@@ -111,13 +108,9 @@
 
 			<div class="mb-12">
 				<h4 class="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">Technologies</h4>
-				<div class="flex flex-wrap gap-3">
-					{#each project.tags as tech}
-						<span class="rounded border border-white/10 bg-white/5 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-white/60">
-							{tech}
-						</span>
-					{/each}
-				</div>
+				<p class="text-sm font-medium text-white/60">
+					{project.tags.join(' • ')}
+				</p>
 			</div>
 
 			<div class="mt-auto flex gap-6">
