@@ -1,0 +1,5 @@
+name = "portfoliov2"
+compatibility_date = "2026-06-28"
+compatibility_flags = ["nodejs_compat"]
+
+pages_build_output_dir = ".svelte-kit/cloudflare"
