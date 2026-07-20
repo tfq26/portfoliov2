@@ -16,6 +16,7 @@ steps:
     environment:
       CLOUDFLARE_API_TOKEN:
         from_secret: cloudflare_api_token
+      CLOUDFLARE_ACCOUNT_ID: 20fd6cbb2c526579bb489b1a3a139030
     when:
       event: push
       branch: main
