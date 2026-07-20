@@ -1,0 +1,26 @@
+when:
+  - event: push
+    branch: main
+  - event: pull_request
+
+steps:
+  - name: install
+    image: node:22
+    commands:
+      - npm ci
+
+  - name: build
+    image: node:22
+    commands:
+      - npm run build
+
+  - name: deploy
+    image: node:22
+    commands:
+      - npx wrangler pages deploy .svelte-kit/cloudflare --project-name portfoliov2
+    environment:
+      CLOUDFLARE_API_TOKEN:
+        from_secret: cloudflare_api_token
+    when:
+      - event: push
+        branch: main
