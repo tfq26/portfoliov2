@@ -1,7 +1,6 @@
 when:
-  - event: push
-    branch: main
-  - event: pull_request
+  event: [push, pull_request]
+  branch: main
 
 steps:
   - name: install
@@ -22,5 +21,5 @@ steps:
       CLOUDFLARE_API_TOKEN:
         from_secret: cloudflare_api_token
     when:
-      - event: push
-        branch: main
+      event: push
+      branch: main
