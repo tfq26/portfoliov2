@@ -1,0 +1,77 @@
+{
+  "repo": {
+    "id": 1,
+    "name": "portfoliov2",
+    "owner": "tfq26",
+    "org_id": 1,
+    "remote_id": "2",
+    "forge_url": "https://git.2helix.org/tfq26/portfoliov2",
+    "clone_url": "https://git.2helix.org/tfq26/portfoliov2.git",
+    "clone_url_ssh": "ssh://git@git.2helix.org:222/tfq26/portfoliov2.git",
+    "private": true,
+    "default_branch": "main",
+    "trusted": {}
+  },
+  "curr": {
+    "number": 4,
+    "created": 1784568251,
+    "status": "pending",
+    "event": "pull_request",
+    "forge_url": "http://git.2helix.org/tfq26/portfoliov2/pulls/1",
+    "commit": {
+      "sha": "97e59c11b3b859b0f2111efd284a54e4962a8b8d",
+      "ref": "refs/pull/1/head",
+      "refspec": "redesign/projects-section:main",
+      "branch": "main",
+      "message": "Redesign: compact project cards + CI fix + Woodpecker pipeline",
+      "author": {
+        "name": "tfq26",
+        "email": "1+tfq26@noreply.git.2helix.org"
+      },
+      "changed_files": [
+        ".github/workflows/cloudflare-pages.yml",
+        ".woodpecker.yml",
+        "package.json",
+        "src/lib/components/ProjectCard.svelte",
+        "src/lib/components/Projects.svelte"
+      ]
+    },
+    "parent": 1,
+    "rerun_count": 1,
+    "author": "tfq26",
+    "avatar": "http://git.2helix.org/avatars/ae8125e6826cd0a2a8fac48f96b7631d"
+  },
+  "prev": {
+    "number": 3,
+    "created": 1784568151,
+    "finished": 1784569027,
+    "status": "canceled",
+    "event": "push",
+    "forge_url": "https://git.2helix.org/tfq26/portfoliov2/commit/1a270c1b5f38ecb54c7f3ae024fc1a42029e3a68",
+    "commit": {
+      "sha": "1a270c1b5f38ecb54c7f3ae024fc1a42029e3a68",
+      "ref": "refs/heads/main",
+      "branch": "main",
+      "message": "ci: trigger Woodpecker pipeline\n",
+      "timestamp": 1784568151,
+      "author": {
+        "name": "tfq26",
+        "email": "1+tfq26@noreply.git.2helix.org"
+      }
+    },
+    "author": "tfq26",
+    "avatar": "https://git.2helix.org/avatars/ae8125e6826cd0a2a8fac48f96b7631d"
+  },
+  "workflow": {},
+  "step": {},
+  "sys": {
+    "name": "woodpecker",
+    "host": "ci.2helix.org",
+    "url": "https://ci.2helix.org",
+    "version": "3.16.0"
+  },
+  "forge": {
+    "type": "gitea",
+    "url": "https://git.2helix.org"
+  }
+}
