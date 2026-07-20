@@ -34,4 +34,4 @@ jobs:
           command: pages deploy .svelte-kit/cloudflare --project-name portfoliov2
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: 20fd6cbb2c526579bb489b1a3a139030
+          CLOUDFLARE_ACCOUNT_ID: bdfb4d698ccb82a56a92f8943abe5e47
